@@ -1,0 +1,14 @@
+.status-bg-emerald {
+  background: rgba(120, 191, 160, 0.15);
+  color: oklch(69.6% 0.17 162.48);
+}
+
+.status-bg-red {
+  background: oklch(70.216% 0.18922 22.207 / 0.151);
+  color: oklch(63.7% 0.237 25.331);
+}
+
+.pro-card {
+  background: rgba(120, 191, 160, 0.08);
+  border: 1px solid rgba(120, 191, 160, 0.15);
+}

@@ -1,0 +1,15 @@
+.bg-purple { 
+  background: #6b4fa015;
+}
+
+.bg-purple:hover { 
+  background: #6b4fa023;
+}
+
+.bg-sage { 
+  background: #78BFA015;
+}
+
+.bg-sage:hover { 
+  background: #78BFA023;
+}

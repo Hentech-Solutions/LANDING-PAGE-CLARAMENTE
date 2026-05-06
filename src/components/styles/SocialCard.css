@@ -1,0 +1,10 @@
+.info-card {
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.info-card:hover {
+  border-color: rgba(120, 191, 160, 0.3) !important;
+  background: rgba(120, 191, 160, 0.05) !important;
+}

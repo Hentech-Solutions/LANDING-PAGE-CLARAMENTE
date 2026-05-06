@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+.navigation-menu {
+  line-height: 1.6;
+  transition: all 0.4s ease;
+}
+
+.claramente-font {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.list {
+  display: flex;
+  justify-content: end;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-size: 0.83rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+
+.nav-badge {
+  background-color: oklch(70.192% 0.15767 160.464 / 0.158);
+}

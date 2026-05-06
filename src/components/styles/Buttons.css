@@ -1,0 +1,17 @@
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+  padding: 8px 0;
+  max-width: max-content;
+}
+
+.back-btn svg {
+    width: 14px;
+    height: 14px;
+}

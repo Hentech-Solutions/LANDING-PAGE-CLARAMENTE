@@ -1,0 +1,13 @@
+.icon-bg-emerald {
+  background: rgba(120, 191, 160, 0.15);
+  color: oklch(69.6% 0.17 162.48);
+}
+
+.description-card:hover {
+  background: rgba(120,191,160,0.05); 
+  border-color: rgba(120,191,160,0.15);
+}
+
+.numeric-description-card:hover .description-number{
+  opacity: 100%;
+}

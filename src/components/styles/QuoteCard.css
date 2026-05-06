@@ -1,0 +1,16 @@
+.sup-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7rem;
+  line-height: 0.5;
+  color: rgba(160, 139, 200, 0.1);
+  position: absolute;
+  top: 32px;
+  left: 32px;
+}
+
+.sup-quote {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 28px;
+  padding: 48px 44px;
+  position: relative;
+}

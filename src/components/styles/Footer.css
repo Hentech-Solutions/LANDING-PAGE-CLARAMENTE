@@ -1,0 +1,13 @@
+/* ─── FOOTER ─── */
+.footer-brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;color:white;letter-spacing:.08em;text-decoration:none;
+}
+.footer-note{font-size:.75rem;color:rgba(255,255,255,.35)}
+.footer-back{
+  font-size:.75rem;color:rgba(255,255,255,.4);
+  text-decoration:none;transition:color .2s;
+  display:flex;align-items:center;gap:6px;
+}
+.footer-back:hover{color:var(--sage2)}
+.footer-back svg{width:13px;height:13px}

@@ -1,0 +1,105 @@
+.profile-card {
+  position: relative;
+  border-radius: 28px;
+  padding: 40px 32px;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  border: 1.5px solid rgba(255,255,255,0.1);
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.3s;
+  display: flex; flex-direction: column; align-items: flex-start;
+  text-align: left;
+  animation: cardIn 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  opacity: 0;
+  height: 100%;
+}
+.profile-card.c1 { animation-delay: 0.3s; }
+.profile-card.c2 { animation-delay: 0.45s; }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.profile-card.patient {
+  background: linear-gradient(145deg, rgba(107,79,160,0.45) 0%, rgba(160,139,200,0.25) 100%);
+}
+.profile-card.professional {
+  background: linear-gradient(145deg, rgba(45,27,78,0.6) 0%, rgba(107,79,160,0.3) 100%);
+}
+
+.profile-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 28px 64px rgba(0,0,0,0.4);
+}
+.profile-card.patient:hover { border-color: rgba(160,139,200,0.5); }
+.profile-card.professional:hover { border-color: rgba(120,191,160,0.5); }
+
+/* Shimmer on hover */
+.profile-card::before {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transition: left 0.5s ease;
+}
+.profile-card:hover::before { left: 100%; }
+
+.card-icon {
+  width: 56px; height: 56px; border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+.patient .card-icon { background: rgba(120,191,160,0.25); }
+.professional .card-icon { background: rgba(120,191,160,0.18); }
+.card-icon svg { width: 28px; height: 28px; }
+
+.card-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.patient .card-label { color: rgba(196,179,222,0.7); }
+.professional .card-label { color: rgba(168,216,196,0.7); }
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.55);
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.card-arrow {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  transition: gap 0.3s;
+}
+.patient .card-arrow { color: rgba(196,179,222,0.8); }
+.professional .card-arrow { color: rgba(120,191,160,0.85); }
+.profile-card:hover .card-arrow { gap: 14px; }
+.card-arrow svg { width: 16px; height: 16px; }
+
+/* Corner accent */
+.card-corner {
+  position: absolute; top: 0; right: 0;
+  width: 80px; height: 80px;
+  border-radius: 0 28px 0 80px;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.patient .card-corner { background: linear-gradient(135deg, rgba(196,179,222,0.5), transparent); }
+.professional .card-corner { background: linear-gradient(135deg, rgba(120,191,160,0.5), transparent); }
+.profile-card:hover .card-corner { opacity: 0.7; }

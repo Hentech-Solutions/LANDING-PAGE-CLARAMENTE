@@ -1,0 +1,10 @@
+label {
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--sage);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
