@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="w-full bg-(--purple) flex items-center justify-between flex-wrap gap-[16px] py-[36px] px-[48px]">
       <a href="#" className="footer-brand ">Claramente</a>
       <p className="footer-note text-start sm:text-center">
-        © {new Date().getFullYear()} Claramente Clínica de Psicologia · CRP 06/61283
+        © <a href="#" className=' font-semibold uppercase hover:text-white duration-300'>mentor</a> {new Date().getFullYear()} · CRP 06/61283
         <br />
         <span className="text-[0.70rem]">
           Av. Pres. Tancredo Neves, 363 Itaquaquecetuba — SP
