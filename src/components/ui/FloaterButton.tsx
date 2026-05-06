@@ -40,7 +40,8 @@ export default function FloaterButton({
         overflow-hidden
         flex
         items-center
-        gap-3
+        gap-0
+        sm:gap-3
         rounded-full
         bg-green-300
         p-4
@@ -96,7 +97,9 @@ export default function FloaterButton({
           group-hover:text-white
         "
       >
-        {label}
+        <span className="hidden sm:inline-block">
+          {label}
+        </span>
       </span>
     </motion.a>
   );
