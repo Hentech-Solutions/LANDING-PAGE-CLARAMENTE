@@ -106,7 +106,7 @@ export default function Home() {
           <SpecCard 
             icon={<FileTextIcon color="black" size={'20px'}/>}
             theme="sage"
-            description="Laudo técnico completo entregue ao final, com validade oficial para uso clínico, educacional e jurídico."
+            description="Laudo técnico completo entregue ao final, com validade oficial para uso clínico e educacional"
           />
 
         </div>
@@ -247,8 +247,8 @@ export default function Home() {
                   <ShieldCheckIcon size={20} />
                 </div>
               }
-              title="Laudo com validade legal"
-              description="Documento técnico emitido por especialista registrada no CRP, com validade para uso clínico, educacional, jurídico e previdenciário — aceito em concursos, escolas, clínicas e processos judiciais."
+              title="Base para o diagnóstico médico"
+              description="O laudo neuropsicológico é um mapeamento detalhado das funções cerebrais que serve como base fundamental para que neurologistas ou psiquiatras concluam o diagnóstico clínico e definam o tratamento adequado."
             />
 
             <NumericDescriptionCard
@@ -378,7 +378,7 @@ export default function Home() {
                 </div>
               }
               title="Quantas sessões são necessárias?"
-              description="Em geral, de 3 a 6 sessões, dependendo do objetivo da avaliação, da demanda do paciente e dos instrumentos utilizados. O número exato é definido após a entrevista inicial."
+              description="Em geral, de 6 a 10 sessões, dependendo do objetivo da avaliação, da demanda do paciente e dos instrumentos utilizados. O número exato é definido após a entrevista inicial."
             />
 
             <NumericDescriptionCard
@@ -391,8 +391,8 @@ export default function Home() {
                   <CircleQuestionMark size={15} />
                 </div>
               }
-              title="O laudo tem validade legal?"
-              description="Sim. O laudo psicológico emitido por profissional registrado no CRP tem validade técnica, legal e jurídica, podendo ser utilizado em processos seletivos, escolares, médicos, judiciais e previdenciários."
+              title="Para que serve o laudo final?"
+              description="É um documento técnico que descreve seu perfil cognitivo. Ele é utilizado por profissionais da saúde e educação para orientar intervenções, apoiar diagnósticos médicos e planejar estratégias de reabilitação ou suporte escolar."
             />
 
             <NumericDescriptionCard
@@ -406,7 +406,7 @@ export default function Home() {
                 </div>
               }
               title="Atende crianças pequenas?"
-              description="Sim. Realizamos avaliações a partir dos 4 anos de idade, com abordagem adaptada para cada faixa etária, incluindo instrumentos lúdicos e acolhedores para os pequenos."
+              description="Sim. Realizamos avaliações a partir dos 2 anos de idade, com abordagem adaptada para cada faixa etária, incluindo instrumentos lúdicos e acolhedores para os pequenos."
             />
 
             <NumericDescriptionCard
