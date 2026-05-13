@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Claramente - Psicologia",
-  description: "Clínica de psicologia em Itaquaquecetuba, SP. Atendimento presencial e online.",
+  description:
+    "Clínica de psicologia em Itaquaquecetuba, SP. Atendimento presencial e online.",
 };
 
 export default function RootLayout({
@@ -24,10 +27,32 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+
+        {/* Google Analytics / Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-G5R18B11TP"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag(){
+              dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-G5R18B11TP');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
