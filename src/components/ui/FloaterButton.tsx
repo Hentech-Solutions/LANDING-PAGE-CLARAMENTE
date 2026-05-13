@@ -3,6 +3,12 @@
 import { whatsappIcon } from "../FakeSVGIcons";
 import { motion } from "framer-motion";
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 interface WhatsappButtonProps {
   label?: string;
   className?: string;
@@ -20,8 +26,24 @@ export default function FloaterButton({
   const cleanNumber = phoneNumber.replace(/\D/g, '');
   const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
 
+  function handleClick() {
+
+    // Conversão Google Ads
+    window.gtag?.('event', 'conversion', {
+      send_to: 'AW-XXXXXXXXXX/abc123',
+    });
+
+    // Evento customizado GA4
+    window.gtag?.('event', 'whatsapp_click', {
+      event_category: 'Contato',
+      event_label: 'Botao Flutuante WhatsApp',
+      value: 1,
+    });
+  }
+
   return (
     <motion.a
+      
       href={url}
       target="_blank"
       rel="noopener noreferrer"

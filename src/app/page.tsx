@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 
 import Image from "next/image";
 import Logo from './../components/ui/svg/CLARAMENTE-LOGO.svg';
+import ContatoForm from "@/components/ContatoForm/ContatoForm";
 
 export default function Home() {
   return (
@@ -437,6 +438,12 @@ export default function Home() {
               description="No momento atendemos de forma particular. Entre em contato pelo WhatsApp para saber sobre formas de pagamento, parcelamento e valores disponíveis."
             />
           </div>
+        </div>
+      </section>
+
+      <section className="py-27.5 px-6 md:px-12 w-screen z-99 flex flex-col items-center bg-white">
+        <div className="w-full max-w-[1100px]">
+          <ContatoForm />
         </div>
       </section>
 

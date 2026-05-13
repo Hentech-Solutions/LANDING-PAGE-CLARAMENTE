@@ -1,13 +1,38 @@
 import { whatsappIcon } from "../FakeSVGIcons";
 
+
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 interface WhatsappButtonProps {
   label ?: string;  
   className ?: string;
 }
 
 export default function WhatsappButton({ label = "Falar pelo WhatsApp", className}: WhatsappButtonProps ) {
+
+  function handleClick() {
+
+    // Conversão Google Ads
+    window.gtag?.('event', 'conversion', {
+      send_to: 'AW-XXXXXXXXXX/abc123',
+    });
+
+    // Evento customizado GA4 
+    window.gtag?.('event', 'whatsapp_click', {
+      event_category: 'Contato',
+      event_label: 'Botao Flutuante WhatsApp',
+      value: 1,
+    });
+  }
+
+
   return (
     <button
+      
       className={`
         group
         relative
