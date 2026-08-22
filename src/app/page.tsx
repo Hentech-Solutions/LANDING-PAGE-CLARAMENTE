@@ -134,7 +134,7 @@ export default function Home() {
           </h1>
           <p className="hero-text">
             Ninguém chega a uma página como essa por acaso. Geralmente é porque
-            algo pede atenção há um tempo — e procurar já exige coragem.
+            algo pede atenção há um tempo.
           </p>
           <div className="hero-actions">
             <a className="button button-dark" href="#como-funciona">
