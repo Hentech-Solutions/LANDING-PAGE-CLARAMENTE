@@ -62,6 +62,7 @@ export default function ContatoPage() {
       const message = `Olá! Sou ${pendingForm.name}. O cuidado é ${pendingForm.careFor}. Meu e-mail é ${pendingForm.email} e meu telefone é ${pendingForm.phone}. O que me trouxe até aqui: ${topic}.`;
       setSubmitted(true);
       setIsSending(false);
+      window.location.hash = "contatoenviado";
       window.open(`https://wa.me/5511982829179?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     } catch {
       setError("Não foi possível enviar seus dados agora. Confira sua conexão e tente novamente.");

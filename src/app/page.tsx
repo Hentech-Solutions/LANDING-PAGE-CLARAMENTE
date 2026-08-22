@@ -135,6 +135,7 @@ export default function Home() {
       
       // 2. MUDA O ESTADO PARA MOSTRAR A TELA DE SUCESSO
       setSubmitted(true);
+      window.location.hash = "contatoenviado";
       // Removida a linha do window.open(WhatsApp)
 
     } catch {
