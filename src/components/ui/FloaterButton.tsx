@@ -6,25 +6,28 @@ import { motion } from "framer-motion";
 interface WhatsappButtonProps {
   label?: string;
   className?: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   message?: string;
+  href?: string;
 }
 
 export default function FloaterButton({ 
   label = "Agendar pelo WhatsApp", 
   className,
   phoneNumber,
-  message = "Olá! Gostaria de mais informações."
+  message = "Olá! Gostaria de mais informações.",
+  href,
 }: WhatsappButtonProps) {
   
-  const cleanNumber = phoneNumber.replace(/\D/g, '');
-  const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
+  const cleanNumber = phoneNumber?.replace(/\D/g, '') ?? '';
+  const defaultUrl = cleanNumber ? `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}` : "/contato";
+  const destination = href || defaultUrl;
 
   return (
     <motion.a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={destination}
+      target={destination.startsWith("http") ? "_blank" : undefined}
+      rel={destination.startsWith("http") ? "noopener noreferrer" : undefined}
       // Animação de entrada na página
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}

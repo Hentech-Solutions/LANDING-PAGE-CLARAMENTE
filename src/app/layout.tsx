@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Claramente - Psicologia",
+  title: "claramente | psicologia aplicada",
   description:
-    "Clínica de psicologia em Itaquaquecetuba, SP. Atendimento presencial e online.",
+    "Avaliação psicológica e neuropsicológica com escuta, clareza e próximos passos.",
 };
 
 export default function RootLayout({
