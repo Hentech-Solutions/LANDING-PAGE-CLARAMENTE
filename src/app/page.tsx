@@ -12,9 +12,20 @@ import {
   MessageCircle,
   ShieldCheck,
   Sparkles,
+  X,
 } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/svg/InstagramIcon";
 import Logo from "@/components/ui/svg/CLARAMENTE-LOGO.svg";
+
+declare global {
+  interface Window {
+    gtag: (
+      command: string,
+      eventName: string,
+      parameters?: Record<string, string>,
+    ) => void;
+  }
+}
 
 const clinicImages = [
   { src: "/recepcao.jpg", alt: "Recepção da clínica Claramente" },
@@ -66,6 +77,15 @@ export default function Home() {
   const [activeImage, setActiveImage] = useState(0);
   const [selectedTopic, setSelectedTopic] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState("");
+  const [pendingForm, setPendingForm] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    careFor: string;
+  } | null>(null);
 
   useEffect(() => {
     const timer = window.setInterval(
@@ -78,24 +98,50 @@ export default function Home() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const name = String(data.get("name") || "");
-    const careFor = String(data.get("careFor") || "");
-    const message = `Olá! Sou ${name}. O cuidado é ${careFor}. O que me trouxe até aqui: ${selectedTopic || "Ainda não sei — só quero conversar"}.`;
-    localStorage.setItem(
-      "claramente_checkin",
-      JSON.stringify({
-        name,
-        careFor,
-        topic: selectedTopic,
-        createdAt: new Date().toISOString(),
-      }),
-    );
-    setSubmitted(true);
-    window.open(
-      `https://wa.me/5511982829179?text=${encodeURIComponent(message)}`,
-      "_blank",
-      "noopener,noreferrer",
-    );
+    setError("");
+    setPendingForm({
+      name: String(data.get("name") || ""),
+      email: String(data.get("email") || ""),
+      phone: String(data.get("phone") || ""),
+      careFor: String(data.get("careFor") || ""),
+    });
+    setIsModalOpen(true);
+  }
+
+  async function confirmConsent() {
+    if (!pendingForm || isSending) return;
+    setIsSending(true);
+    setError("");
+    const topic = selectedTopic || "Ainda não sei — só quero conversar";
+    const submittedAt = new Date().toISOString();
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...pendingForm, topic, submittedAt }),
+      });
+      
+      if (!response.ok) throw new Error("Falha no envio");
+
+      // 1. DISPARA O PIXEL DO GOOGLE ADS AQUI
+      if (typeof window !== "undefined" && window.gtag) {
+        window.gtag('event', 'conversion', {
+            'send_to': 'AW-SEU_ID/SEU_ROTULO_DE_CONVERSAO'
+        });
+      }
+
+      localStorage.setItem("claramente_checkin", JSON.stringify({ ...pendingForm, topic, submittedAt }));
+      
+      // 2. MUDA O ESTADO PARA MOSTRAR A TELA DE SUCESSO
+      setSubmitted(true);
+      // Removida a linha do window.open(WhatsApp)
+
+    } catch {
+      setError("Não foi possível enviar seus dados agora. Confira sua conexão e tente novamente.");
+    } finally {
+      setIsSending(false);
+    }
   }
 
   return (
@@ -115,6 +161,7 @@ export default function Home() {
           <a href="#a-clinica">A clínica</a>
           <a href="#servicos">O que oferecemos</a>
           <a href="#como-funciona">Como funciona</a>
+          <a href="#depoimentos">Depoimentos</a>
           <a href="#contato">Contato</a>
         </div>
         <a href="#contato" className="nav-action">
@@ -339,12 +386,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="process-section about-section">
+      <section className="process-section about-section" id="depoimentos">
         <div className="section-intro light">
           <p className="eyebrow">
             <span /> QUEM VAI TE OUVIR
           </p>
           <h2>
+            
             Uma clínica conduzida por quem faz clínica{" "}
             <em>há mais de 20 anos.</em>
           </h2>
@@ -404,12 +452,22 @@ export default function Home() {
         </div>
         <form className="checkin-form" onSubmit={handleSubmit}>
           <div className="form-top">
-            <span>Formulário de Check-in (leva 1 minuto)</span>
+            <span>Formulário de contato(leva 1 minuto)</span>
           </div>
           <label>
             Como podemos te chamar?
             <input required name="name" placeholder="seu nome" />
           </label>
+          <div className="contact-fields">
+            <label>
+              E-mail
+              <input required type="email" name="email" placeholder="seu@email.com" />
+            </label>
+            <label>
+              Telefone
+              <input required type="tel" name="phone" placeholder="(11) 99999-9999" />
+            </label>
+          </div>
           <label>
             Para quem é o cuidado?
             <select required name="careFor" defaultValue="">
@@ -452,6 +510,39 @@ export default function Home() {
           )}
         </form>
       </section>
+
+      {isModalOpen && (
+        <div className="consent-backdrop" role="presentation">
+          <section className="consent-modal" role="dialog" aria-modal="true" aria-labelledby="consent-title">
+            <button type="button" className="consent-close" aria-label="Fechar aviso" onClick={() => setIsModalOpen(false)}><X size={18} /></button>
+            
+            {submitted ? (
+              // TELA DE SUCESSO (PÓS-ENVIO)
+              <div className="text-center">
+                <h2 id="consent-title">Mensagem enviada com sucesso!</h2>
+                <p>Obrigado pelo contato, {pendingForm?.name}. Nossa equipe retornará no seu e-mail ou telefone em breve.</p>
+                <button type="button" className="button button-dark mt-4" onClick={() => setIsModalOpen(false)}>
+                  Fechar
+                </button>
+              </div>
+            ) : (
+              // TELA DE AVISO (PRÉ-ENVIO)
+              <>
+                <p className="eyebrow"><span /> antes de continuar</p>
+                <h2 id="consent-title">Um aviso importante.</h2>
+                <p>A Claramente realiza atendimentos particulares e, atualmente, não atende convênios nem oferece atendimentos gratuitos.</p>
+                <div className="consent-actions">
+                  <button type="button" className="consent-cancel" onClick={() => setIsModalOpen(false)}>Cancelar</button>
+                  <button type="button" className="button button-dark" onClick={confirmConsent} disabled={isSending}>
+                    {isSending ? "Enviando..." : "Entendo e desejo continuar"}
+                  </button>
+                </div>
+                {error && <p className="consent-error">{error}</p>}
+              </>
+            )}
+          </section>
+        </div>
+      )}
 
       <footer className="new-footer">
         <Link href="/" className="brand-mark light-brand">

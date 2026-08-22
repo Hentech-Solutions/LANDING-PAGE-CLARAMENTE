@@ -588,6 +588,80 @@ h2 em {
   gap: 8px;
   margin: 18px 0 0;
 }
+.contact-fields {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+.consent-backdrop {
+  align-items: center;
+  background: rgba(33, 27, 45, 0.62);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 22px;
+  position: fixed;
+  z-index: 100;
+}
+.consent-modal {
+  background: var(--cream);
+  box-shadow: 0 22px 70px rgba(33, 27, 45, 0.28);
+  max-width: 570px;
+  padding: 38px;
+  position: relative;
+  width: 100%;
+}
+.consent-modal h2 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1;
+  margin-bottom: 22px;
+}
+.consent-modal > p:not(.eyebrow):not(.consent-error) {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.85;
+  margin: 0 0 16px;
+}
+.consent-close {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  height: 34px;
+  justify-content: center;
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 34px;
+}
+.consent-close:hover { color: var(--violet); }
+.consent-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+.consent-actions .button { min-width: 205px; }
+.consent-cancel {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  padding: 14px 20px;
+}
+.consent-cancel:hover { border-color: var(--violet); color: var(--violet); }
+.consent-error { color: var(--violet); font-size: 12px; line-height: 1.5; margin: 16px 0 0; }
+.form-success,
+.success-modal-content { display: flex; flex-direction: column; align-items: flex-start; }
+.form-success h2,
+.success-modal-content h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; margin: 12px 0 16px; }
+.form-success p:not(.eyebrow),
+.success-modal-content p:not(.eyebrow) { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 0 0 24px; }
+.success-icon { align-items: center; background: var(--sage); border-radius: 50%; color: var(--ink); display: flex; height: 54px; justify-content: center; margin-bottom: 20px; width: 54px; }
 .contact-section .checkin-aside {
   max-width: 430px;
 }
@@ -946,6 +1020,20 @@ h2 em {
   }
   .topic-option {
     padding: 9px 11px;
+  }
+  .contact-fields {
+    gap: 0;
+    grid-template-columns: 1fr;
+  }
+  .consent-modal {
+    padding: 30px 22px 24px;
+  }
+  .consent-actions {
+    flex-direction: column-reverse;
+  }
+  .consent-actions .button,
+  .consent-cancel {
+    width: 100%;
   }
   .recognition-section .section-intro h2 {
     font-size: clamp(2.5rem, 10vw, 3.6rem);
