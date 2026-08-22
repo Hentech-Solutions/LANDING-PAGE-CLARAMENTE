@@ -103,6 +103,12 @@ a {
   gap: 8px;
   padding-bottom: 5px;
 }
+.nav-phone {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.nav-phone:hover { color: var(--violet); }
 .hero-section {
   align-items: stretch;
   display: grid;
@@ -580,6 +586,24 @@ h2 em {
 .submit-button {
   width: 100%;
 }
+.whatsapp-secondary-button {
+  align-items: center;
+  border: 1px solid var(--sage);
+  color: var(--violet);
+  display: flex;
+  font-size: 13px;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 14px 20px;
+  transition: background .2s, border-color .2s, transform .2s;
+  width: 100%;
+}
+.whatsapp-secondary-button:hover {
+  background: var(--sage-light);
+  border-color: var(--violet);
+  transform: translateY(-1px);
+}
 .success-message {
   align-items: center;
   color: var(--violet);
@@ -754,6 +778,7 @@ h2 em {
   .nav-action {
     font-size: 11px;
   }
+  .nav-phone { display: none; }
   .hero-section,
   .content-section,
   .process-section,

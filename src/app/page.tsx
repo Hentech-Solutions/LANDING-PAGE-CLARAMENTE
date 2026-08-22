@@ -164,6 +164,7 @@ export default function Home() {
           <a href="#depoimentos">Depoimentos</a>
           <a href="#contato">Contato</a>
         </div>
+        <a className="nav-phone" href="tel:+5511982829179">(11) 98282-9179</a>
         <a href="#contato" className="nav-action">
           Continuar a conversa <ArrowRight size={16} />
         </a>
@@ -392,7 +393,7 @@ export default function Home() {
             <span /> QUEM VAI TE OUVIR
           </p>
           <h2>
-            
+
             Uma clínica conduzida por quem faz clínica{" "}
             <em>há mais de 20 anos.</em>
           </h2>
@@ -501,8 +502,11 @@ export default function Home() {
             </div>
           </fieldset>
           <button className="button button-peach submit-button" type="submit">
-            Continuar a conversa no WhatsApp <MessageCircle size={18} />
+            Enviar meu contato <MessageCircle size={18} />
           </button>
+          <a className="whatsapp-secondary-button" href="https://wa.me/5511982829179" target="_blank" rel="noreferrer">
+            Entrar em contato pelo WhatsApp <MessageCircle size={17} />
+          </a>
           {submitted && (
             <p className="success-message">
               <Check size={16} /> Conversa pronta para continuar.
@@ -553,6 +557,8 @@ export default function Home() {
         </Link>
         <p>
           CRP 06/61283
+          <br />
+          (11) 98282-9179
           <br />
           Av. Pres. Tancredo Neves, 363 · Itaquaquecetuba — SP
           <br />© 2026 Claramente. Todos os direitos reservados.
