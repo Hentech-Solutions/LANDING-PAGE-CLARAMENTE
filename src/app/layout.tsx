@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "claramente | psicologia aplicada",
+  title: "claramente & neurotec| psicologia aplicada",
   description:
     "Avaliação psicológica e neuropsicológica com escuta, clareza e próximos passos.",
 };

@@ -155,7 +155,7 @@ export default function Home() {
         <Link href="/" className="brand-mark">
           <Image src={Logo} alt="Claramente" width={40} height={46} />
           <span>
-            Claramente<small>Psicologia Aplicada</small>
+            Claramente<span className="text-violet-400">&</span>Neurotec<small>Psicologia Aplicada</small>
           </span>
         </Link>
         <div className="nav-links">
@@ -553,7 +553,7 @@ export default function Home() {
         <Link href="/" className="brand-mark light-brand">
           <Image src={Logo} alt="Claramente" width={40} height={46} />
           <span>
-            Claramente<small>Psicologia Aplicada</small>
+            Claramente<span className="text-violet-400">&</span>Neurotec<small>Psicologia Aplicada</small>
           </span>
         </Link>
         <p>
